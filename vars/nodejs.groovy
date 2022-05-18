@@ -1,4 +1,4 @@
-def LintChecks(){
+def lintChecks(){
     sh '''
 //       ~/node_modules/jslint/bin/jslint.js server.js
        echo Link checks
