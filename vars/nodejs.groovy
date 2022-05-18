@@ -21,14 +21,14 @@ def call(){
         }
 
         stages{
-//            stage('Lint Checks') {
-//                steps{
-//                    script{
-//                       lintChecks()
-//                    }
-//
-//                }
-//            }
+            stage('Lint Checks') {
+                steps{
+                    script{
+                       lintChecks()
+                    }
+
+                }
+            }
 
             stage('Sonar Checks') {
                 steps{
