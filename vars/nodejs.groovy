@@ -16,7 +16,7 @@ def call(){
     pipeline{
         agent any
 
-        environmentp {
+        environment {
         SONAR = credentials('SONAR')
         }
 
