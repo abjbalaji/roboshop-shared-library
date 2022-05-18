@@ -1,7 +1,7 @@
 def lintChecks(){
     sh '''
       # ~/node_modules/jslint/bin/jslint.js server.js
-      pylint *.py
+      #pylint *.py
       echo Lint Checks for ${COMPONENTS}
        '''
         }
