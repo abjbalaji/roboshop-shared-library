@@ -15,6 +15,7 @@ def call(){
 
         environment {
             SONAR = credentials('SONAR')
+            NEXUS = credentials('NEXUS')
         }
 
         stages{
@@ -65,7 +66,11 @@ def call(){
                         when{
                             expression{env.TAG_NAME != null}
                         }
-                        sh 'echo'
+                        sh '''
+                            npm install
+                            zip -r ${COMPONENT}.zip node_modules server.js
+                       
+                           '''
 
                     }
             stage('Preparing Artifact')
@@ -73,7 +78,9 @@ def call(){
                         when{
                             expression{env.TAG_NAME != null}
                         }
-                        sh 'echo'
+                       sh '''
+                            curl -v -u  ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}.zip  http://172.31.9.189:8081/repository/${COMPONENT}/${COMPONENT}.zip
+                            '''
 
                     }
         }
