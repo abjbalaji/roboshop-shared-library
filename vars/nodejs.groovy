@@ -11,6 +11,8 @@ def lintChecks(){
 def call(){
     pipeline{
         agent any
+        options{
+        ansiColor('xterm') }
 
         environment {
         SONAR = credentials('SONAR')
@@ -88,4 +90,4 @@ def call(){
         } // line for agent
     } // line for pipeline
 
- //line for call
+//line for call
