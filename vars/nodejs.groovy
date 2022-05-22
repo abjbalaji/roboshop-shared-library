@@ -62,22 +62,6 @@ def call(){
 
             } //line for parallel stage
 
-            stage('Preparing Artifact'){
-
-                when{
-                    expression{env.TAG_NAME != null}
-                }
-                sh 'echo'
-
-            }
-            stage('Building Artifacts'){
-
-                when{
-                    expression{env.TAG_NAME != null}
-                }
-                sh 'echo'
-
-            }
 
         } // line for agent
     } // line for pipeline
