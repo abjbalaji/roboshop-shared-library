@@ -16,42 +16,42 @@ def call(){
         SONAR = credentials('SONAR')
         }
 
-        stages{
+        stages {
             stage('Lint Checks') {
-                steps{
-                    script{
-                       lintChecks()
+                steps {
+                    script {
+                        lintChecks()
                     }
 
                 }
             }
 
             stage('Sonar Checks') {
-                steps{
-                    script{
-                        env.ARGS= "-Dsonar.sources=."
+                steps {
+                    script {
+                        env.ARGS = "-Dsonar.sources=."
                         common.sonarChecks()
                     }
 
                 }
             }
-            stage('Test Cases'){
-                parallel{
-                    stage('Unit Testing'){
-                        steps{
-                            sh'echo Unit Test cases'
+            stage('Test Cases') {
+                parallel {
+                    stage('Unit Testing') {
+                        steps {
+                            sh 'echo Unit Test cases'
                         }
                     }
 
-                    stage('Integration Testing'){
-                        steps{
-                            sh'echo Integration Test cases'
+                    stage('Integration Testing') {
+                        steps {
+                            sh 'echo Integration Test cases'
                         }
                     }
 
-                    stage('Functional Testing'){
-                        steps{
-                            sh'echo Functional Test cases'
+                    stage('Functional Testing') {
+                        steps {
+                            sh 'echo Functional Test cases'
                         }
                     }
                 }
@@ -59,7 +59,7 @@ def call(){
 
             }
 
-
+        }
     }
 
 
