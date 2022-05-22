@@ -62,22 +62,28 @@ def call(){
 
             } //line for parallel stage
 
-            stage('Preparing and Building Artifacts'){
-                when{
-                    expression{ env.TAG_NAME != null }
-                }
-                steps{
-                    sh 'echo Hello'
-                }
-            }
-            stage('Uploading Artifacts'){
-                when{
-                    expression{ env.TAG_NAME != null }
-                }
+            stage('Preparing Artifact')
+                    {
+                        when{
+                            expression{env.TAG_NAME != null}
+                        }
+                        sh '''
+                            npm install
+                            zip -r ${COMPONENT}.zip node_modules server.js
+                       
+                           '''
 
-                steps{
-                    sh 'echo Hello'
-                }
+                    }
+            stage('Preparing Artifact')
+                    {
+                        when{
+                            expression{env.TAG_NAME != null}
+                        }
+                        sh '''
+                            curl -v -u  ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}.zip  http://172.31.9.189:8081/repository/${COMPONENT}/${COMPONENT}.zip
+                            '''
+
+                    }
             }
         } // line for agent
     } // line for pipeline
