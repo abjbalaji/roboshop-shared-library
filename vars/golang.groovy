@@ -60,6 +60,22 @@ def call(){
 
 
             }
+            stage('Preparing Artifact')
+                    {
+                        when{
+                            expression{env.TAG_NAME != null}
+                        }
+                        sh 'echo'
+
+                    }
+            stage('Preparing Artifact')
+                    {
+                        when{
+                            expression{env.TAG_NAME != null}
+                        }
+                        sh 'echo'
+
+                    }
         }
     }
 
