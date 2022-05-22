@@ -6,15 +6,26 @@ def lintChecks(){
        '''
         }
 
+
 def call(){
     pipeline{
         agent any
-
+        environment {
+            SONAR = credentials('SONAR')
+        }
         stages{
             stage('Lint Checks') {
                 steps{
                     script{
                        lintChecks()
+                    }
+
+                }
+            }
+            stage('Sonar Checks') {
+                steps{
+                    script{
+                        common.sonarChecks()
                     }
 
                 }
