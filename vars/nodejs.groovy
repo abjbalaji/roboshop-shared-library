@@ -7,7 +7,6 @@ def lintChecks(){
 
 
 
-}
 
 def call(){
     pipeline{
