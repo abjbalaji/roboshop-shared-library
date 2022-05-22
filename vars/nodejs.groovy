@@ -63,11 +63,18 @@ def call(){
             } //line for parallel stage
 
             stage('Preparing and Building Artifacts'){
+                when{
+                    expression{ env.TAG_NAME != null }
+                }
                 steps{
                     sh 'echo Hello'
                 }
             }
             stage('Uploading Artifacts'){
+                when{
+                    expression{ env.TAG_NAME != null }
+                }
+
                 steps{
                     sh 'echo Hello'
                 }
