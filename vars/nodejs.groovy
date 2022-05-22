@@ -62,7 +62,16 @@ def call(){
 
             } //line for parallel stage
 
-
+            stage('Preparing and Building Artifacts'){
+                steps{
+                    sh 'echo Hello'
+                }
+            }
+            stage('Uploading Artifacts'){
+                steps{
+                    sh 'echo Hello'
+                }
+            }
         } // line for agent
     } // line for pipeline
 
